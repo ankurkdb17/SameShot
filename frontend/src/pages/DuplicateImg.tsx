@@ -409,7 +409,6 @@ const DuplicateImg = () => {
           {results.map((r, i) => {
             const colorClass = r.score > 0.9 ? "text-green-600" : r.score > 0.8 ? "text-amber-500" : "text-slate-400";
             const borderClass = r.score > 0.9 ? "border-l-green-600" : r.score > 0.8 ? "border-l-amber-500" : "border-l-slate-400";
-            const bgClass = r.score > 0.9 ? "bg-green-600" : r.score > 0.8 ? "bg-amber-500" : "bg-slate-400";
             const badgeBg = r.score > 0.9 ? "bg-green-600/10" : r.score > 0.8 ? "bg-amber-500/10" : "bg-slate-400/10";
             return (
               <div key={i} className={`bg-white rounded-xl p-5 mb-4 flex items-center justify-between border-l-[5px] shadow-sm ${borderClass}`}>
