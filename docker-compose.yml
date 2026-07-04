@@ -1,0 +1,46 @@
+# SameShot — full-stack local orchestration.
+#
+# Usage:
+#   docker compose up --build
+#   Frontend: http://localhost:5173
+#   Backend:  http://localhost:8000/docs
+#
+# Data persistence:
+#   Reference pool images and the FAISS index survive container restarts
+#   via the named volumes below. Run `docker compose down -v` to wipe them.
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      # Comma-separated list; must include wherever the frontend is served from.
+      - CORS_ORIGINS=http://localhost:5173
+    volumes:
+      - uploads:/app/uploads
+      - faiss_store:/app/dinov2_faiss_store
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/docs')"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Baked in at build time — see frontend/Dockerfile for why.
+        VITE_API_BASE_URL: http://localhost:8000
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  uploads:
+  faiss_store:

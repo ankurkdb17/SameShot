@@ -1,0 +1,49 @@
+# ===========================================================================
+# .dockerignore — backend/
+# Prevents unnecessary files from being sent to the Docker build context,
+# reducing build time and final image size.
+# ===========================================================================
+
+# Python byte-code and caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pycache
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Development / editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Test artefacts
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+tests/
+pytest.ini
+requirements-dev.txt
+
+# Runtime data directories — these are mounted as Docker volumes at runtime;
+# they should not be baked into the image.
+uploads/
+dinov2_faiss_store/
+
+# Logs
+*.log
+
+# Git metadata
+.git/
+.gitignore

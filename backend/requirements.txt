@@ -1,0 +1,31 @@
+# SameShot backend — pinned dependencies.
+#
+# Versions are pinned for reproducible builds. torch/torchvision are pinned
+# together because torchvision's ABI is tied to a specific torch release —
+# do not bump one without checking the other against
+# https://github.com/pytorch/vision#installation
+#
+# GPU users: this installs the CPU build of torch by default. For CUDA,
+# install torch/torchvision separately first using the command generator at
+# https://pytorch.org/get-started/locally/, then `pip install -r requirements.txt`
+# (pip will see torch is already satisfied and skip it).
+
+# Core ML
+torch==2.12.1
+torchvision==0.27.1
+
+# Computer vision
+opencv-python-headless==5.0.0.93
+Pillow==12.3.0
+ImageHash==4.3.2
+
+# Vector search
+faiss-cpu==1.14.3
+
+# Web framework
+fastapi==0.139.0
+uvicorn[standard]==0.50.0
+python-multipart==0.0.32
+
+# Numerics
+numpy==2.5.0

@@ -1,0 +1,10 @@
+/* App.css */
+
+/* We are resetting this so the Dashboard takes up the full screen */
+@import "tailwindcss";
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
