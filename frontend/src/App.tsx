@@ -1,5 +1,4 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route} from 'react-router-dom';
 // 1. Capitalize the import name (even if the file is named duplicate_img.tsx)
 import DuplicateImg from './pages/DuplicateImg'; 
 import Home from './pages/Home';
